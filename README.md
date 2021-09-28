@@ -16,3 +16,15 @@ npm run dev
 http://localhost:3000/ 에 들어가면 Cannot GET /  == 서버가 구동되고 있다는 뜻
 
 MVP CSS
+
+![webSocket](./img/webSocket.jpg)
+
+> HTTP
+    > user가 request하면 Server 가 response하는 프로토콜이며 서버는 항상 네가 누군지 잊는다. 그것이 stateless라고 한다.
+
+> WebSocket
+    > user가 WebSocket을 이용한 리퀘스트를 하고 WebSocket connection 응답하면 연결
+    > 계속 연결되어있어서 서버가 우리가 누군지 알고있다.
+    > 양방향 이다.
+    > 간단하게 말하면 전화통화 하는 것 과 비슷하다.
+
