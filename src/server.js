@@ -1,4 +1,6 @@
 import http from"http"
+// 노드에 이미깔려씨다.
+import WebSocket from "ws";
 import express from "express";
 // 여기에 app을 만들거다.
 
@@ -14,13 +16,23 @@ app.get("/", (req, res) => res.render("home"));
     //유저가 /public으로 가게되면 __dirname+"/public" 폴더를 보여주게 해야한다.
 app.use("/public", express.static(__dirname + "/public"));
 const handleListen = () => console.log(`Listening on http://localhost:3000`);
-app.listen(3000, handleListen);
 
 // 노드를 했다면 셋팅하는 것이 쉬울 것이다.
-    // 정리하면 express 를 사용하는데 이번 강의에서는 Express로 views를 설정하고,
-    // render 해주는거고 나머지는 websocket 에서 실시간으로 일어남.
-    // Express 끝
+// 정리하면 express 를 사용하는데 이번 강의에서는 Express로 views를 설정하고,
+// render 해주는거고 나머지는 websocket 에서 실시간으로 일어남.
+// Express 끝
 
-    // Pug = view 엔진
-    // Express = template 지정해주기 public url 생성 유저에게 파일을 공유
-    // home.pug를 render 해주는 route handler  
+// Pug = view 엔진
+// Express = template 지정해주기 public url 생성 유저에게 파일을 공유
+// home.pug를 render 해주는 route handler  
+
+//  10
+// app.listen(3000, handleListen); 
+const server =http.createServer(app);
+const wss = new WebSocket.Server({server});
+// 2개의 protocal  다 같은 port를 곹유하는 거다
+//  wss 를 쓸때는 항상 이렇게 하지 않아도 된다.
+//  wss 만 써도 된다는 소리다.
+
+
+server.listen(3000,handleListen)
