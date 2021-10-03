@@ -30,9 +30,29 @@ const handleListen = () => console.log(`Listening on http://localhost:3000`);
 // app.listen(3000, handleListen); 
 const server =http.createServer(app);
 const wss = new WebSocket.Server({server});
-// 2개의 protocal  다 같은 port를 곹유하는 거다
+// 2개의 protocal  다 같은 port를 공유하는 거다
 //  wss 를 쓸때는 항상 이렇게 하지 않아도 된다.
 //  wss 만 써도 된다는 소리다.
 
+function handleConnection(socket){
+    console.log(socket);
+    //callback 으로 socket을 받는다
+//socket은 연결된 어떤 사람 = 연결된 브라우저와의 연락라인이다. 그래서 우리는 이걸 어디 저장해야함
 
-server.listen(3000,handleListen)
+}
+
+
+// websokect 이벤트
+// 이건 event를 받고 funtion 도 받아.
+
+wss.on("connection", (socket) => {
+    console.log("Connected to Browser ✅");
+    socket.on("close", () => console.log("Disconnected from the Browser ❌"));
+    socket.on("message", (message) => {
+        console.log(message.toString('utf8'))
+        });
+    socket.send("hello!!!");
+  });
+
+server.listen(3000,handleListen);
+
