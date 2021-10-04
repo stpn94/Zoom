@@ -518,27 +518,34 @@ wsServer.on("connection", (socket) => {
 });
 ```
 
-
+```
 //app.js
 socket.emit("enter_room", { payload: input.value } , () => {console.log("server is done!");
 //server.js
 socket.on("enter_room",(msg, done) => {console.log(msg); setTimeout(() => {done();},10000);})
+```
 !!!!!매우 중요함
 첫번째 socket.emit을 사용하고 있어
+```
 //app.js
 String"enter_room"
 //server.js
 String"enter_room"
+```
 두번째 argument에는 event 이름이 들어가
+```
 //app.js
 {payload : input.value} // JSON object
 //server.js
 (msg, ----) => {console.log(msg); ----;})
+```
 세번째 argument에는 서버에서 호출하는 function이 들어가 
+```
 //app.js
 () => {console.log("server is done!")
 //server.js
 (---, done) => {-----; setTimeout(() => {done();},10000);}
+```
 
 ### 이해 못하겠다.... 복습 또 복습 하자.
 
