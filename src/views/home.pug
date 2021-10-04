@@ -5,14 +5,14 @@ html(lang="en")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Noom
-        link(rel="stylesheet" href="https://unpkg.com/mvp.css")
+        link(rel="stylesheet", href="https://unpkg.com/mvp.css")
     body
-        header 
-            h1 It works! 
-        main 
-            h2 Welcome to Noom
-        //- 페이지를 render하고 있으니 home에 script를 추가해주자
-        //- 하지만 static 설정 해주어야 한다.
-        //- 설정하면 app.js에 작성된 script들을 보여줄 것 이다.
-        script(src="/public/js/app.js")
-        
+        header
+            h1 Noom
+        main
+            div#welcome
+                form
+                    input(placeholder="room name", required, type="text")
+                    button Enter Room
+        script(src="/socket.io/socket.io.js") 
+        script(src="/public/js/app.js") 
